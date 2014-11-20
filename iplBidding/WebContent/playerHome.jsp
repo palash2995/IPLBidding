@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<form action="Player" method="post">
+<input type="submit" value="PlayerStats"> <br/>
+<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
+<input type="hidden" name="purpose" value="playerStats" >
+</form>
+<form action="Player" method="post">
+<input type="submit" value="PlayerUpdate"> <br/>
+<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
+<input type="hidden" name="purpose" value="playerUpdate" >
+</form>
+<a href="loginPage.jsp">Logout</a>
 </body>
 </html>

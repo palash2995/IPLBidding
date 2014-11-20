@@ -7,6 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<center><h1>Your Details and Statistics</h1></center>
+<%=request.getParameter("playerDetails") %>
+<br>
+<%=request.getParameter("playerStats") %>
+<br>
+<form action="Player" method="post">
+<input type="submit" value="GoToHome"> <br/>
+<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
+<input type="hidden" name="purpose" value="playerHome" >
+</form>
+<br>
+<form action="Player" method="post">
+<input type="submit" value="GoToHome"> <br/>
+<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
+<input type="hidden" name="purpose" value="playerHome" >
+</form>
+<br>
+<a href="loginPage.jsp">Logout</a>
 </body>
 </html>

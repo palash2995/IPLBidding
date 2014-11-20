@@ -7,6 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="Player" method="post">
+<br/>
+Please update your details <br/>
+Your username was: <%=request.getParameter("userName") %> <br/>
+Username <br/>
+<input type="text" name="Username"size="20px"> <br/>
+Your userId was: <%=request.getParameter("userID") %> <br/>
+UserId <br/>
+<input type="text" name="User Id"size="20px"> <br/>
+Your country was: <%=request.getParameter("country") %> <br/>
+Country <br/>
+<input type="text" name="Country"size="20px"> <br/>
+<input type="submit" value="Update"> <br/>
+<input type="hidden" name="purpose" value="update" >
+</form>
 
 </body>
 </html>

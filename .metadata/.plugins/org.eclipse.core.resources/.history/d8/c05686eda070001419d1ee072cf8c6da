@@ -33,22 +33,5 @@ public class Home extends HttpServlet implements HomeInterface{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
-	public void playerSignUp(PlayerDetailsObject player)
-	{
-		
-	}
-	public void login(String userId,String password, String type)
-	{
-		
-	}
-	public void playerStats(String id)
-	{
-		
-	}
-	public void updatePlayer(PlayerDetailsObject player)
-	{
-		
-	}
 
 }

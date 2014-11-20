@@ -1,5 +1,4 @@
 INDEX VERSION 1.121+/users/ug12/palashk/Documents/Database/IPLBidding/IPLBidding/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-1874942464.index
 2921389860.index
 2103876813.index
 3144927786.index

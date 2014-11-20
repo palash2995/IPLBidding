@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Home
  */
-public class Home extends HttpServlet implements HomeInterface{ 
+public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -32,23 +32,6 @@ public class Home extends HttpServlet implements HomeInterface{
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
-	
-	public void playerSignUp(PlayerDetailsObject player)
-	{
-		
-	}
-	public void login(String userId,String password, String type)
-	{
-		
-	}
-	public void playerStats(String id)
-	{
-		
-	}
-	public void updatePlayer(PlayerDetailsObject player)
-	{
-		
 	}
 
 }

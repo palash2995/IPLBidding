@@ -1,0 +1,6 @@
+package main;
+
+public interface HomeInterface {
+	public void playerSignUp(String userId, String  );
+	public void login(String userId,String password, String type)
+}

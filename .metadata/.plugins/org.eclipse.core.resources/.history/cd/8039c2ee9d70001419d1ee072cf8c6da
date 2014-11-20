@@ -19,14 +19,4 @@
     <servlet-name>Home</servlet-name>
     <url-pattern>/Home</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>User</display-name>
-    <servlet-name>User</servlet-name>
-    <servlet-class>main.User</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>User</servlet-name>
-    <url-pattern>/User</url-pattern>
-  </servlet-mapping>
 </web-app>

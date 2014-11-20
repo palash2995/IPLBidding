@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Home
  */
-public class Home extends HttpServlet{ 
+public class Home extends HttpServlet implements HomeInterface{ 
 	private static final long serialVersionUID = 1L;
        
     /**

@@ -1,0 +1,8 @@
+package main;
+
+public interface HomeInterface {
+	private void playerSignUp(PlayerDetailsObject player);
+	private void login(String userId,String password, String type);
+	private void playerStats(String id);
+	private void updatePlayer(PlayerDetailsObject player);
+}

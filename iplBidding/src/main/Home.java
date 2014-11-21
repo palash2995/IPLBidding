@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Home
@@ -28,7 +29,7 @@ public class Home extends HttpServlet{
        
 		String dbURL2 = "jdbc:postgresql://10.105.33.149/ipl";
         String user = "user1";
-        String pass = "";
+        String pass = "user123";
 
         try {
 			Class.forName("org.postgresql.Driver");
@@ -60,16 +61,6 @@ public class Home extends HttpServlet{
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String jsp = request.getParameter("purpose");
-		
-		if(jsp.equals("login"))
-		{
-			String userId = request.getParameter("UserId");
-			String password = request.getParameter("Password");
-			String type = request.getParameter("LoginAs");
-			login(userId,password,type,response);
-		}	
-	
 	}
 
 	/**
@@ -77,28 +68,48 @@ public class Home extends HttpServlet{
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String jsp = request.getParameter("purpose");
+		
+		if(jsp.equals("login"))
+		{
+			login(request,response);
+		}
+		
 	}
 	
-	private void login(String userId,String password, String type,HttpServletResponse response) throws IOException
+	private void login(HttpServletRequest request,HttpServletResponse response) throws IOException
 	{
 		try 
 		{
+			String userId = request.getParameter("UserId");
+			String password = request.getParameter("Password");
+			String type = request.getParameter("LoginAs");
 			
 		if(Users.authenticate(userId, password , type))
 		{
-			response.sendRedirect("/iplBidding/loginPage.jsp");
+			
+			HttpSession session  = request.getSession();
+			session.setAttribute("userId",userId);
+			session.setAttribute("type",type);			
+			
+			if(type.equals("p"))
+			{
+				session.setAttribute("pUserId",userId);
+				response.sendRedirect("/iplBidding/playerHome.jsp");
+			}
+			if(type.equals("t"))response.sendRedirect("/iplBidding/teamHome.jsp");
+			if(type.equals("a"))response.sendRedirect("/iplBidding/adminHome.jsp");
 		}
 		
 		else
 		{
-			response.sendRedirect("/iplBidding/error.jsp?reason="+"Oops! Something went wrong");						
+			response.sendRedirect("/iplBidding/error.jsp?reason="+"Authentication Failure !!!!");						
 		}	
 		
 		} 
 		
 		catch (IOException e) {
-			
-	// TODO Auto-generated catch block
 			response.sendRedirect("/iplBidding/error.jsp?reason="+"Oops! Something went wrong");
 			e.printStackTrace();
 		}

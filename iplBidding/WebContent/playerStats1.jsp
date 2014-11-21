@@ -8,17 +8,8 @@
 </head>
 <body>
 <form action="Player" method="post">
-<br/>
-Please update your details <br/>
-Your username was: <%=request.getParameter("userName") %> <br/>
-Username <br/>
-<input type="text" name="Username"size="20px"> <br/>
-
-Country <br/>
-<input type="text" name="Country"size="20px"> <br/>
-<input type="submit" value="Update"> <br/>
-<input type="hidden" name="purpose" value="update" >
+<input type="submit" value="PlayerStats"> <br/>
+<input type="hidden" name="purpose" value="playerStats" >
 </form>
-<a href="logout.jsp">Logout</a>
 </body>
 </html>

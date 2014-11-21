@@ -7,14 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="Player" method="post">
+<form action="playerStats1.jsp" method="post">
 <input type="submit" value="PlayerStats"> <br/>
-<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
-<input type="hidden" name="purpose" value="playerStats" >
+<input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
 </form>
 <form action="Player" method="post">
 <input type="submit" value="PlayerUpdate"> <br/>
-<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
+<input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
 <input type="hidden" name="purpose" value="playerUpdate" >
 </form>
 <a href="logout.jsp">Logout</a>

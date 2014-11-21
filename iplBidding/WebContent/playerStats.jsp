@@ -8,21 +8,37 @@
 </head>
 <body>
 <center><h1>Your Details and Statistics</h1></center>
-<%=request.getParameter("playerDetails") %>
+<table border="1" cellpadding="5" width="300">
+	<tr>
+		<td>Name </td>
+		<td><%out.println( request.getParameter("userName"));%> </td>
+	</tr>
+	<tr>
+		<td> Country </td>
+		<td> <%out.println( request.getParameter("country"));%> </td>
+	</tr>
+</table>
 <br>
-<%=request.getParameter("playerStats") %>
+<table border="1" cellpadding="5" width="300">
+	<tr>
+		<td> Matches </td>
+		<td> <%out.println( request.getParameter("matches"));%> </td>
+	</tr>
+	<tr>
+		<td> Runs </td>
+		<td> <%out.println( request.getParameter("runs"));%></td>
+	</tr>
+	<tr>
+		<td> Wickets </td>
+		<td> <%out.println( request.getParameter("wickets"));%></td>
+	</tr>
+	<tr>
+		<td> Catches</td>
+		<td> <%out.println( request.getParameter("catches"));%></td>
+	</tr>
+</table>
 <br>
-<form action="Player" method="post">
-<input type="submit" value="GoToHome"> <br/>
-<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
-<input type="hidden" name="purpose" value="playerHome" >
-</form>
-<br>
-<form action="playerHome.jsp" method="post">
-<input type="submit" value="GoToHome"> <br/>
-<input type="hidden" name="userId" value=%=request.getParameter("userId")% >
-<input type="hidden" name="purpose" value="playerHome" >
-</form>
+<a href="playerHome.jsp">Go to Home</a>
 <br>
 <a href="logout.jsp">Logout</a>
 </body>

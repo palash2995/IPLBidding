@@ -16,6 +16,8 @@ response.setDateHeader("Expires", 0);
 <body>
 <%
 session.setAttribute("userId", null);
+session.setAttribute("pUserId", null);
+session.setAttribute("type", null);
 response.sendRedirect("loginPage.jsp");
 %>
 </body>

@@ -18,12 +18,12 @@
 <input type="hidden" name="purpose" value="playerHome" >
 </form>
 <br>
-<form action="Player" method="post">
+<form action="playerHome.jsp" method="post">
 <input type="submit" value="GoToHome"> <br/>
 <input type="hidden" name="userId" value=%=request.getParameter("userId")% >
 <input type="hidden" name="purpose" value="playerHome" >
 </form>
 <br>
-<a href="loginPage.jsp">Logout</a>
+<a href="logout.jsp">Logout</a>
 </body>
 </html>

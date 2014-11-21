@@ -17,6 +17,6 @@
 <input type="hidden" name="userId" value=%=request.getParameter("userId")% >
 <input type="hidden" name="purpose" value="playerUpdate" >
 </form>
-<a href="loginPage.jsp">Logout</a>
+<a href="logout.jsp">Logout</a>
 </body>
 </html>

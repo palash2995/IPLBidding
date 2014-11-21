@@ -22,6 +22,6 @@ Country <br/>
 <input type="submit" value="Update"> <br/>
 <input type="hidden" name="purpose" value="update" >
 </form>
-
+<a href="logout.jsp">Logout</a>
 </body>
 </html>

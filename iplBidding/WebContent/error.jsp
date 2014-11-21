@@ -9,5 +9,6 @@
 <body>
 <center><h1>Error</h1></center>
 <%=request.getParameter("reason") %>
+<a href="loginPage.jsp">Login Page</a>
 </body>
 </html>

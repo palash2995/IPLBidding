@@ -4,11 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=200, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 <title>Insert title here</title>
 </head>
 <body>
-<center><h1>Error</h1></center>
-<%=request.getParameter("reason") %>
-<a href="loginPage.jsp">Login Page</a>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="loginPage.jsp">IPL PORTAL</a>
+    </div>
+  </div>
+</nav>
+
+
+<center><h1>Error <%=request.getParameter("reason") %> </h1></center>
+
 </body>
 </html>

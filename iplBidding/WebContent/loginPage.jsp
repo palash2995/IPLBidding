@@ -4,36 +4,82 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=200, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
-<form action="Home" method="post">
-Please login here, if you have been registered already <br/>
-User Id <br/>
-<input type="text" name="UserId"size="20px"> <br/>
-Password <br/>
-<input type="password" name="Password" size="20px"> <br/>
-Login as <br/>
-If you are a team fill in 't', if you are a player, fill in 'p' and 'a' for admin
-<input type="text" name="LoginAs" size="20px"> <br/>
-<input type="submit" value="login"> <br/>
-<input type="hidden" name="purpose" value="login" >
-</form>
 
-<form action="Player" method="post">
-<br/>
-Else please register yourself with new Username and Password <br/>
-Username <br/>
-<input type="text" name="UserName"size="20px"> <br/>
-UserId <br/>
-<input type="text" name="UserId"size="20px"> <br/>
-Country <br/>
-<input type="text" name="Country"size="20px"> <br/>
-Password <br/>
-<input type="password" name="Password" size="20px"> <br/>
-<input type="submit" value="register"> <br/>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">IPL PORTAL</a>
+        </div>
+      </div>
+    </nav>
+
+ 
+    <div class="container">
+      <h2>Login</h2>
+      <form action="Home" method="post" role="form">
+        <div class="form-group">
+          <label for="email">UserId:</label>
+          <input type="text" class="form-control" name="UserId" id="email" placeholder="Enter UserId">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" name="Password" class="form-control" id="pwd" placeholder="Enter password">
+        </div>
+
+		<div class="form-group">
+	        <select type="text" name="LoginAs" class="form-control" id="pwd" placeholder="type">
+			  <option>p</option>
+			  <option>t</option>
+			  <option>a</option>
+			</select>
+		</div>        
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" value="login" class="btn btn-default">Submit</button> 
+		<input type="hidden" name="purpose" value="login" >
+      </form>
+    </div>
+
+
+    <div class="container">
+      <h2>Player Register</h2>
+      <form action="Player" method="post" role="form">
+        <div class="form-group">
+          <label for="email">UserId:</label>
+          <input type="text" class="form-control" name="UserId" id="email" placeholder="Enter UserId">
+        </div>
+        <div class="form-group">
+                <div class="form-group">
+          <label for="email">UserName:</label>
+          <input type="text" class="form-control" name="UserName" id="email" placeholder="Enter UserName">
+        </div>
+        <div class="form-group">
+                <div class="form-group">
+          <label for="email">Country:</label>
+          <input type="text" class="form-control" name="Country" id="email" placeholder="Enter Country">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" name="Password" class="form-control" id="pwd" placeholder="Enter password">
+        </div>
+
+<button type="submit" value="register" class="btn btn-default">Register</button>
 <input type="hidden" name="purpose" value="register" >
-</form>
+      </form>
+    </div>
 
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 
 </body>
 </html>

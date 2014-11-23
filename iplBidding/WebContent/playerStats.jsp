@@ -4,42 +4,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=200, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 <title>Insert title here</title>
 </head>
 <body>
-<center><h1>Your Details and Statistics</h1></center>
-<table border="1" cellpadding="5" width="300">
-	<tr>
-		<td>Name </td>
-		<td><%out.println( request.getParameter("userName"));%> </td>
-	</tr>
-	<tr>
-		<td> Country </td>
-		<td> <%out.println( request.getParameter("country"));%> </td>
-	</tr>
-</table>
-<br>
-<table border="1" cellpadding="5" width="300">
-	<tr>
-		<td> Matches </td>
-		<td> <%out.println( request.getParameter("matches"));%> </td>
-	</tr>
-	<tr>
-		<td> Runs </td>
-		<td> <%out.println( request.getParameter("runs"));%></td>
-	</tr>
-	<tr>
-		<td> Wickets </td>
-		<td> <%out.println( request.getParameter("wickets"));%></td>
-	</tr>
-	<tr>
-		<td> Catches</td>
-		<td> <%out.println( request.getParameter("catches"));%></td>
-	</tr>
-</table>
-<br>
-<a href="playerHome.jsp">Go to Home</a>
-<br>
-<a href="logout.jsp">Logout</a>
+
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="playerHome.jsp">HOME</a> </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+      <a class="navbar-brand pull-right" href="logout.jsp">LOGOUT</a> </div>
+    </nav>
+
+
+    <div class="container">
+      <h2>Details</h2>
+      <table class="table table-bordered">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td><%out.println( request.getParameter("userName"));%></td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td><%out.println( request.getParameter("country"));%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    
+   <div class="container">
+      <h2>Details</h2>
+      <table class="table table-bordered">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Matches</td>
+            <td><%out.println( request.getParameter("matches"));%></td>
+          </tr>
+          <tr>
+            <td>Runs</td>
+            <td><%out.println( request.getParameter("runs"));%></td>
+          </tr>
+          <tr>
+            <td>Wickets</td>
+            <td><%out.println( request.getParameter("wickets"));%></td>
+          </tr>
+          <tr>
+            <td>Catches</td>
+            <td><%out.println( request.getParameter("catches"));%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
 </body>
 </html>

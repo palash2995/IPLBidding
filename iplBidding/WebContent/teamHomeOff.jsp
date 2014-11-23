@@ -4,40 +4,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=200, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<meta name="viewport" content="width=200, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
 
+
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">HOME</a> </div>
+          <a class="navbar-brand" href="teamHomeOff.jsp">HOME</a> </div>
         <div id="navbarCollapse" class="collapse navbar-collapse">
       <a class="navbar-brand pull-right" href="logout.jsp">LOGOUT</a> </div>
     </nav>
 
-    <br>
-    <br>
+
+<br>
+<br>
+
 <center> <div class="container">
-<form action="playerStats1.jsp" method="post" role="form">
-<button type="submit" value="PlayerStats" class="btn btn-info btn-lg">Player Stats</button> 
+<form action="TeamOff" method="post" role="form">
+<button type="submit" value="teamStats" class="btn btn-info btn-lg">Team Stats</button> 
 <input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
+<input type="hidden" name="purpose" value="teamStats" >
 </form>
 </div>
 </center>
 <br>
 <center>
 <div class="container">
-<form action="Player" method="post">
-<button type="submit" name="playerUpdate" class="btn btn-info btn-lg">Update Details</button> 
+<form action="TeamOff" method="post">
+<button type="submit" name="TeamUpdate" class="btn btn-info btn-lg">Update Details</button> 
 <input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
-<input type="hidden" name="purpose" value="playerUpdate" >
+<input type="hidden" name="purpose" value="teamUpdate" >
 </form>
 </div>
 </center>
 
-</div>
+
+
+
 </body>
 </html>

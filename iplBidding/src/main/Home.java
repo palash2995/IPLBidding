@@ -3,6 +3,7 @@ package main;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
@@ -27,18 +28,19 @@ public class Home extends HttpServlet{
     public Home() {
         super();
        
-		String dbURL2 = "jdbc:postgresql://10.105.33.149/ipl";
+        
+        String dbURL2 = "jdbc:postgresql://localhost/ipl";
         String user = "user1";
         String pass = "user123";
 
         try {
-			Class.forName("org.postgresql.Driver");
-			
-			conn1 = DriverManager.getConnection(dbURL2, user, pass);
-			Users.conn = DriverManager.getConnection(dbURL2, user, pass);
+        	Class.forName("org.postgresql.Driver");
+        	conn1 = DriverManager.getConnection(dbURL2, user, pass);
 			st = conn1.createStatement();
 			System.out.println("init"+conn1);
-        	} catch (Exception e) {
+        	
+        }
+        catch (Exception e) {
 			// TODO Auto-generated catch block
         		e.printStackTrace();
         	}
@@ -98,7 +100,24 @@ public class Home extends HttpServlet{
 				session.setAttribute("pUserId",userId);
 				response.sendRedirect("/iplBidding/playerHome.jsp");
 			}
-			if(type.equals("t"))response.sendRedirect("/iplBidding/teamHome.jsp");
+			if(type.equals("t"))
+			{
+
+				ResultSet rs;
+				Statement st = conn1.createStatement();
+				
+			    rs = st.executeQuery("SELECT * from playerbid");	
+						
+			    if(!rs.next())
+				{
+					response.sendRedirect("/iplBidding/teamHomeOff.jsp");    	
+				}
+					
+			    else
+			    {
+					response.sendRedirect("/iplBidding/bidFramework.jsp");///askto pande
+			    }
+			}
 			if(type.equals("a"))response.sendRedirect("/iplBidding/adminHome.jsp");
 		}
 		
@@ -109,7 +128,7 @@ public class Home extends HttpServlet{
 		
 		} 
 		
-		catch (IOException e) {
+		catch (Exception e) {
 			response.sendRedirect("/iplBidding/error.jsp?reason="+"Oops! Something went wrong");
 			e.printStackTrace();
 		}

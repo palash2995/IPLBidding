@@ -68,7 +68,7 @@ public class admin extends Home {
 				int earlierRuns = 0, earlierWickets = 0, earlierCatches = 0;
 				try {
 					st = conn1.createStatement();
-					ResultSet rs = st.executeQuery("Select runs, wickets, catches from PlayerPlays where player_id = '" + players[i] + "'");
+					ResultSet rs = st.executeQuery("Select runs, wickets, catches from playerStats where player_id = '" + players[i] + "'");
 					while(rs.next())
 					{
 						earlierRuns = rs.getInt("runs");
@@ -84,7 +84,7 @@ public class admin extends Home {
 				}
 				try {
 					st = conn1.createStatement();
-					st.executeUpdate("Update PlayerPlays Set runs = " + earlierRuns + " ,wickets = " + earlierWickets + " ,catches = " + earlierCatches + " where player_id = '" + players[i] + "'");
+					st.executeUpdate("Update playerStats Set runs = " + earlierRuns + " ,wickets = " + earlierWickets + " ,catches = " + earlierCatches + " where player_id = '" + players[i] + "'");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

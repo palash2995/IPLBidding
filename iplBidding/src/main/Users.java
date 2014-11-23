@@ -15,7 +15,7 @@ public class Users {
 		try
 		{
 	
-		String dbURL2 = "jdbc:postgresql://localhost/ipl";
+		String dbURL2 = "jdbc:postgresql://10.105.33.149/ipl";
         String user = "user1";
         String pass1 = "user123";
 
@@ -34,12 +34,15 @@ public class Users {
 		ResultSet rs;
 		Statement st = conn.createStatement();
 		
-		if(type.equals("p"))
+		
+		System.out.println("asd " + Id+pass+type);
+		
+		if(type.equals("Player"))
 		{
 	        rs = st.executeQuery("SELECT * from players where userid ='" + Id +"' and password = '"  + pass + "'");	
 		}
 		
-		else if(type.equals("t"))
+		else if(type.equals("Team"))
 		{
 			rs = st.executeQuery("SELECT * from teams where teamId ='" + Id +"' and pass = '"  + pass + "'");
 		}

@@ -42,7 +42,7 @@ public class TeamOff extends Home{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	
+	System.out.println("DGHGHGJGGJLJKLJK:HKHK:K:HHKHKK");
 		
 		String jsp = request.getParameter("purpose");
 		
@@ -109,7 +109,7 @@ public class TeamOff extends Home{
 		
 		for(String pId : ids)
 		{	
-			ResultSet rs3 = st.executeQuery("select name from playerDetails where id = '" + pId + "'");	
+			ResultSet rs3 = st.executeQuery("select name from playerDetails where playerid = '" + pId + "'");	
 
 			rs3.next();			
 			String playerName = rs3.getString("name");

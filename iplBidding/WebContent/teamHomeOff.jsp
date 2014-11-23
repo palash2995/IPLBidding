@@ -11,12 +11,23 @@
 <body>
 
 
-    <nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="teamHomeOff.jsp">HOME</a> </div>
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-      <a class="navbar-brand pull-right" href="logout.jsp">LOGOUT</a> </div>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#">IPL Player Auction</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Home</a></li>
+            <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
 
@@ -25,7 +36,7 @@
 
 <center> <div class="container">
 <form action="TeamOff" method="post" role="form">
-<button type="submit" value="teamStats" class="btn btn-info btn-lg">Team Stats</button> 
+<button type="submit" value="teamStats" class="btn btn-default btn-lg">Team Stats</button> 
 <input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
 <input type="hidden" name="purpose" value="teamStats" >
 </form>
@@ -35,7 +46,7 @@
 <center>
 <div class="container">
 <form action="TeamOff" method="post">
-<button type="submit" name="TeamUpdate" class="btn btn-info btn-lg">Update Details</button> 
+<button type="submit" name="TeamUpdate" class="btn btn-default btn-lg">Update Details</button> 
 <input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
 <input type="hidden" name="purpose" value="teamUpdate" >
 </form>

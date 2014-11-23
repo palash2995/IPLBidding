@@ -11,10 +11,19 @@
 <body>
 
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">IPL PORTAL</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#">IPL Player Auction</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
         </div>
       </div>
     </nav>
@@ -34,9 +43,9 @@
 
 		<div class="form-group">
 	        <select type="text" name="LoginAs" class="form-control" id="pwd" placeholder="type">
-			  <option>p</option>
-			  <option>t</option>
-			  <option>a</option>
+			  <option>Player</option>
+			  <option>Team</option>
+			  <option>Administrator</option>
 			</select>
 		</div>        
         <div class="checkbox">

@@ -4,13 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=200, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<meta name="viewport" content="width=200, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 <title>Insert title here</title>
+
 </head>
+
 <body>
 
- <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -29,30 +32,32 @@
       </div>
     </nav>
 
+<center><h2>Welcome Admin</h2></center>   
     <br>
     <br>
-<center> <div class="container">
-<div class="form-group">
-<form action="Player" method="post" role="form">
-<center>
-<button type="submit" value="PlayerStats" class="btn btn-default btn-lg">Player Stats</button>
-</center>
-<input type="hidden" name="purpose" value="playerStats"></form>
-</div>
-</div>
 
+
+ 
+    
+<center> <div class="container">
+<form action="Admin" method="post" role="form">
+<button type="submit" value=""Turn Bidding On"" class="btn btn-default btn-lg">Turn Bidding On</button> 
+<input type="hidden" name="purpose" value="startBidding" >
+</form>
+</div>
 </center>
 <br>
 <center>
 <div class="container">
-<form action="Player" method="post">
-<button type="submit" name="playerUpdate" class="btn btn-default btn-lg">Update Details</button> 
-<input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
-<input type="hidden" name="purpose" value="playerUpdate" >
+<form action="Admin" method="post">
+<button type="submit" name="Enter New Match Details" class="btn btn-default btn-lg">Enter New Match Details</button> 
+<input type="hidden" name="purpose" value="newMatch" >
 </form>
 </div>
 </center>
 
 </div>
+
+
 </body>
 </html>

@@ -82,7 +82,8 @@ public class Player extends Home{
 			st = conn1.createStatement();
 			st.executeUpdate("insert into  players values('" + userId + "','" + password + "')");	
 			st.executeUpdate("insert into  playerDetails values('" + userId + "','" + name + "','" + country + "')");	
-			response.sendRedirect("/iplBidding/loginPage.jsp"); ///successful login later		
+			st.executeUpdate("insert into  squad values('" + userId + "','23')");	
+			response.sendRedirect("/iplBidding/loginPage.jsp"); ///successful login later				
 		
 		}
 
@@ -108,14 +109,14 @@ public class Player extends Home{
 		st = conn1.createStatement();
 		
 		//OLAP remaining 
-		ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id + "'");	
+		ResultSet rs = st.executeQuery("select * from playerDetails where playerid = '" + id + "'");	
 		if(!rs.next())
 		{
 			System.out.println("Not a player dude");
 		}
 		String name = rs.getString("name");
 		String country = rs.getString("country");		
-		ResultSet rs2 = st.executeQuery("select * from playerStats where id = '" + id + "'");	
+		ResultSet rs2 = st.executeQuery("select * from playerStats where playerid = '" + id + "'");	
 		if(!rs2.next())
 		{
 			System.out.println("Chal jhoote");
@@ -147,7 +148,7 @@ public class Player extends Home{
 		
 		if(type.equals("p"))
 		{
-			ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id + "'");	
+			ResultSet rs = st.executeQuery("select * from playerDetails where playerId = '" + id + "'");	
 			if(!rs.next())
 			{
 				System.out.println("isliye hi to");
@@ -178,7 +179,7 @@ public class Player extends Home{
 			System.out.println("dj");
 
 			st = conn1.createStatement();
-			st.executeUpdate("update playerDetails set name = '" + name + "', country = '" + country + "' where id = '" + userId +"'");	
+			st.executeUpdate("update playerDetails set name = '" + name + "', country = '" + country + "' where playerId = '" + userId +"'");	
 			System.out.println("statement created");
 			response.sendRedirect("/iplBidding/playerHome.jsp");		
 		}

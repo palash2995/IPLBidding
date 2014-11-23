@@ -13,5 +13,7 @@ PlayerId : <%=request.getParameter("player")%> <br />
 Squad : <%=request.getParameter("squad")%>  <br />
 Price : <%=request.getParameter("price")%>  <br />
 Select exit bid to leave the auction
+
+
 </body>
 </html>

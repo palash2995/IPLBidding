@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="playerStats1.jsp" method="post">
+<form action="Player" method="post">
 <input type="submit" value="PlayerStats"> <br/>
-<input type="hidden" name="userId" value=<%=session.getAttribute("userId")%> >
+<input type="hidden" name="purpose" value="playerStats" >
 </form>
 <form action="Player" method="post">
 <input type="submit" value="PlayerUpdate"> <br/>

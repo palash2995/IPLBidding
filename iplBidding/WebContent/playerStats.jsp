@@ -38,8 +38,8 @@
 	</tr>
 </table>
 <br>
+
 <a href="playerHome.jsp">Go to Home</a>
-<br>
-<a href="logout.jsp">Logout</a>
+
 </body>
 </html>

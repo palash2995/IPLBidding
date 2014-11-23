@@ -64,9 +64,6 @@ public class Player extends Home{
 			updatePlayer(request,response);
 		}
 	}
-
-	
-	
 	
 	private void playerSignUp(HttpServletRequest request,HttpServletResponse response) throws IOException
 	{
@@ -96,7 +93,6 @@ public class Player extends Home{
 		
 	}
 	
-	
 	private void playerStats(HttpServletRequest request,HttpServletResponse response) throws IOException
 	{
 		try 
@@ -108,14 +104,14 @@ public class Player extends Home{
 		st = conn1.createStatement();
 		
 		//OLAP remaining 
-		ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id + "'");	
+		ResultSet rs = st.executeQuery("select * from playerDetails where playerId = '" + id + "'");	
 		if(!rs.next())
 		{
-			System.out.println("Not a player dude");
+			System.out.println("Not a player dude " + id);
 		}
 		String name = rs.getString("name");
 		String country = rs.getString("country");		
-		ResultSet rs2 = st.executeQuery("select * from playerStats where id = '" + id + "'");	
+		ResultSet rs2 = st.executeQuery("select * from playerStats where playerId = '" + id + "'");	
 		if(!rs2.next())
 		{
 			System.out.println("Chal jhoote");

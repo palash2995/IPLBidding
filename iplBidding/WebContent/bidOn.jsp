@@ -14,6 +14,10 @@ Current best bid <br/>
 TeamId : <%=request.getParameter("squad")%> <br/>
 Price : <%=request.getParameter("bid")%> <br/>
 
+<form action="Player" method="post">
+<input type="submit" value="PlayerStats"> <br/>
+<input type="hidden" name="purpose" value="playerStats" >
+</form>
 
 </body>
 </html>

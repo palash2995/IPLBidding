@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Dummy
@@ -76,6 +77,8 @@ public class Dummy extends HttpServlet {
 			}
 			else
 			{
+				HttpSession session = request.getSession();
+				session.setAttribute("pUserId",playerId);
 				time = Long.parseLong(bidStartTime);
 				if((diff-time)>150000){
 					st = conn1.createStatement();

@@ -8,11 +8,12 @@
 </head>
 <body>
 
-<table>
-<tr>
-<td> Time remaining is <%=request.getParameter("time")%> </td>
-</tr>
+<form action="BidStatus" method="post">
+New Bid
+<input type="text" name="bidAmount" size="20px"> <br/>
+<input type="submit" value="Bid"> <br/>
+<input type="hidden" name="purpose" value="newBid" >
+</form>
 
-</table>
 </body>
 </html>

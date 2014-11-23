@@ -7,7 +7,7 @@
 <title>MATCH SCORECARD</title>
 </head>
 <body>
-	<form action = "adminHome" method="post">
+	<form action = "Admin" method="post">
 		Enter the match ID
 		<input type="text" name="matchID" size="20px"> <br/>
 		Enter the stadium
@@ -175,6 +175,8 @@
 
 			</tr>			
 		</table>
+		<input type="submit" value="Save Match"> <br/>
+		<input type="hidden" name="purpose" value="saveMatch" >
 	</form>
 </body>
 </html>

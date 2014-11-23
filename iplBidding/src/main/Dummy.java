@@ -34,7 +34,6 @@ public class Dummy extends HttpServlet {
 			Class.forName("org.postgresql.Driver");
 
 			conn1 = DriverManager.getConnection(dbURL2, user, pass);
-			Users.conn = DriverManager.getConnection(dbURL2, user, pass);
 			st = conn1.createStatement();
 			System.out.println("init"+conn1);
 		} catch (Exception e) {
@@ -60,23 +59,25 @@ public class Dummy extends HttpServlet {
 		String price = "";
 		long time = 0;
 		ResultSet rs;
+
 		try
 		{
 			st = conn1.createStatement();
-			rs = st.executeQuery("Select playerId, time from playerbid");	
+			rs = st.executeQuery("Select playerId, time from playerBid");	
+
 			while(rs.next())
 			{
 				playerId = rs.getString("playerId");
 				bidStartTime = rs.getString("time");
 			}
-			time = Long.parseLong(bidStartTime);
 
-			if(playerId.equals(""))
-				response.sendRedirect("/iplBidding/teamHomeOff.jsp");
-
+			if(playerId.equals("") || playerId == null){
+				response.sendRedirect("");
+			}
 			else
 			{
-				if((diff-time)>30000){
+				time = Long.parseLong(bidStartTime);
+				if((diff-time)>150000){
 					st = conn1.createStatement();
 					rs = st.executeQuery("Select playerId, teamId, price from squad where playerId = '" + playerId + "'");
 					while(rs.next())
@@ -84,14 +85,25 @@ public class Dummy extends HttpServlet {
 						teamId = rs.getString("teamId");
 						price = rs.getString("price");
 					}
-					response.sendRedirect("/iplBidding/bidOff.jsp?price=" + price + "?player=" + playerId + "?squad=" + teamId);
+					response.sendRedirect("/iplBidding/bidOff.jsp?price=" + price + "&player=" + playerId + "&squad=" + teamId);
 				}
 				else
 				{
-					response.sendRedirect("/iplBidding/bidOn.jsp?time=" + diff + "?player=" + playerId);
+					st = conn1.createStatement();
+					rs = st.executeQuery("Select teamId, price, time from bids where " +
+							"time = (Select max(time) from bids where playerId ='" + playerId + "')");
+					while(rs.next())
+					{
+						teamId = rs.getString("teamId"); 
+						price = rs.getString("price");
+					}
+					diff = 150 - (diff - time)/1000;
+					response.sendRedirect("/iplBidding/bidOn.jsp?time=" + diff + "&player=" + playerId + "&squad=" + teamId + "&bid=" + price);
 				}
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			response.sendRedirect("/iplBidding/error.jsp");
+		}
 	}
 
 }

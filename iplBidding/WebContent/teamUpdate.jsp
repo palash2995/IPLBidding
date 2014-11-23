@@ -7,15 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="Player" method="post">
+<form action="TeamOff" method="post">
 <br/>
 Please update your details <br/>
-Your username was: <%=request.getParameter("userName") %> <br/>
-Username <br/>
-<input type="text" name="UserName"size="20px"> <br/>
-
-Country <br/>
-<input type="text" name="Country"size="20px"> <br/>
+Your teamname was: <%=request.getParameter("teamName") %> <br/>
+Teamname <br/>
+<input type="text" name="TeamName"size="20px"> <br/>
+Stadium <br/>
+<input type="text" name="Stadium"size="20px"> <br/>
+Owner <br/>
+<input type="text" name="Owner"size="20px"> <br/>
 <input type="submit" value="Update"> <br/>
 <input type="hidden" name="purpose" value="update" >
 </form>

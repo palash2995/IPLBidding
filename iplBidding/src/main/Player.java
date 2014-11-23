@@ -17,7 +17,7 @@ public class Player extends Home{
 	private static final long serialVersionUID = 1L;
 
 
-	Player()
+	public Player()
 	{
 		super();
 	}
@@ -80,10 +80,10 @@ public class Player extends Home{
 		try 
 		{
 			st = conn1.createStatement();
-			
-			st.executeQuery("insert into  players values('" + userId + "','" + password + "')");	
-			st.executeQuery("insert into  playerDetails values('" + userId + "','" + name + "','" + country + "')");	
+			st.executeUpdate("insert into  players values('" + userId + "','" + password + "')");	
+			st.executeUpdate("insert into  playerDetails values('" + userId + "','" + name + "','" + country + "')");	
 			response.sendRedirect("/iplBidding/loginPage.jsp"); ///successful login later		
+		
 		}
 
 		
@@ -101,7 +101,6 @@ public class Player extends Home{
 	{
 		try 
 		{
-
 			
 		HttpSession session  = request.getSession();
 		String  id = (String) session.getAttribute("pUserId");
@@ -109,18 +108,23 @@ public class Player extends Home{
 		st = conn1.createStatement();
 		
 		//OLAP remaining 
-		ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id);	
+		ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id + "'");	
+		if(!rs.next())
+		{
+			System.out.println("Not a player dude");
+		}
 		String name = rs.getString("name");
 		String country = rs.getString("country");		
-		
-		ResultSet rs2 = st.executeQuery("select * from playerStats where id = '" + id);	
+		ResultSet rs2 = st.executeQuery("select * from playerStats where id = '" + id + "'");	
+		if(!rs2.next())
+		{
+			System.out.println("Chal jhoote");
+		}
 		String matches = rs2.getString("matches");
 		String runs    = rs2.getString("runs");
 		String wickets = rs2.getString("wickets");
 		String catches = rs2.getString("catches");		
-
-		response.sendRedirect("/iplBidding/playerStats.jsp?userName=" + name + "country=" + country + "matches=" + matches + "runs=" +  runs + "wickets=" +wickets + "catches=" +catches );	
-
+		response.sendRedirect("/iplBidding/playerStats.jsp?userName=" + name + "&country=" + country + "&matches=" + matches + "&runs=" +  runs + "&wickets=" +wickets + "&catches=" +catches );	
 		} 
 		catch (Exception e)
 		{		
@@ -143,10 +147,14 @@ public class Player extends Home{
 		
 		if(type.equals("p"))
 		{
-			ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id);	
+			ResultSet rs = st.executeQuery("select * from playerDetails where id = '" + id + "'");	
+			if(!rs.next())
+			{
+				System.out.println("isliye hi to");
+			}	
 			String name = rs.getString("name");
 			String country = rs.getString("country");		
-			response.sendRedirect("/iplBidding/playerUpdate.jsp?userName=" + name + "country=" + country);	
+			response.sendRedirect("/iplBidding/playerUpdate.jsp?userName=" + name + "&country=" + country);	
 		}
 
 		} 
@@ -164,13 +172,14 @@ public class Player extends Home{
 		{
 			HttpSession session = request.getSession();
 			String userId = (String) session.getAttribute("userId");
-			
+			System.out.println("isliye "+userId);
 			String name = request.getParameter("UserName");
 			String country = request.getParameter("Country");
-
+			System.out.println("dj");
 
 			st = conn1.createStatement();
-			st.executeQuery("update playerDetails where id = '" + userId + "' set name = '" + name + "' country = '" + country + "'");	
+			st.executeUpdate("update playerDetails set name = '" + name + "', country = '" + country + "' where id = '" + userId +"'");	
+			System.out.println("statement created");
 			response.sendRedirect("/iplBidding/playerHome.jsp");		
 		}
 		

@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class BiddingManager extends HttpServlet {
+/**
+ * Servlet implementation class Submit
+ */
+public class Submit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	Connection conn1 =null;
@@ -21,7 +24,7 @@ public class BiddingManager extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BiddingManager() {
+	public Submit() {
 		super();
 		String dbURL2 = "jdbc:postgresql://10.105.33.149/ipl";
 		String user = "user1";
@@ -37,41 +40,40 @@ public class BiddingManager extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsp = request.getParameter("purpose");
-		if(jsp.equals("startBid")){
-			String playerId = request.getParameter("playerId");
-			Date date = new Date();
-			long diff = date.getTime();
-			try {
+		Date date = new Date();
+		long diff = date.getTime();
+		String playerId = "";
+		String bidStartTime = "";
+		long time = 0;
+		ResultSet rs;
+		try
+		{
 			st = conn1.createStatement();
-			st.executeUpdate("Insert into playerBid values('" + playerId + "','" + diff + "')");
-			Thread.sleep(150000);	
-			st = conn1.createStatement();
-			ResultSet rs = st.executeQuery("Select teamId, price, time from bids where " +
-					"time = (Select max(time) from bids where playerId ='" + playerId + "')");
-			String teamId = null;
-			int price = 0;
+			rs = st.executeQuery("Select playerId, time from playerBid");	
 			while(rs.next())
 			{
-				teamId = rs.getString("teamId"); 
-				price = rs.getInt("price");
+				playerId = rs.getString("playerId");
+				bidStartTime = rs.getString("time");
 			}
-			System.out.println(teamId + price + playerId);
-			st = conn1.createStatement();
-			st.executeUpdate("Update Squad set teamId = '" + teamId + "', price = " + price + " where playerId = '" + playerId + "'");
-			Thread.sleep(150000);	
-			st = conn1.createStatement();
-			st.executeUpdate("Delete from playerBid");
-			} catch (Exception e) {
-				e.printStackTrace();
-				response.sendRedirect("/iplBidding/error.jsp");
+			time = Long.parseLong(bidStartTime);
+			if(!playerId.equals(""))
+			{
+				if((diff-time)<150000) response.sendRedirect("/iplBidding/bidSubmit.jsp?");
 			}
-			response.sendRedirect("/iplBidding/adminHomeOn.jsp");
+		}catch (Exception e) 
+		{ 
+			response.sendRedirect("/iplBidding/error.jsp");
 		}
 	}
 

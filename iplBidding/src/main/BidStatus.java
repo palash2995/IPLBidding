@@ -35,7 +35,6 @@ public class BidStatus extends HttpServlet {
 			Class.forName("org.postgresql.Driver");
 
 			conn1 = DriverManager.getConnection(dbURL2, user, pass);
-			Users.conn = DriverManager.getConnection(dbURL2, user, pass);
 			st = conn1.createStatement();
 			System.out.println("init"+conn1);
 		} catch (Exception e) {
@@ -54,6 +53,7 @@ public class BidStatus extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsp = request.getParameter("purpose");
+		System.out.println("Why only here?");
 		if(jsp.equals("newBid"))
 		{
 			Date date = new Date();
@@ -74,7 +74,11 @@ public class BidStatus extends HttpServlet {
 					bidStartTime = rs.getString("time");
 				}
 				time = Long.parseLong(bidStartTime);
-				if((diff-time)<30000){
+				int bestPrice = 0;
+				st = conn1.createStatement();
+				rs = st.executeQuery("Select max(price) as bestPrice from bids where playerId ='" + playerId + "'");
+				while(rs.next()) bestPrice = rs.getInt("bestPrice");
+				if((diff-time)<150000 && bids>bestPrice){
 					st = conn1.createStatement();
 					HttpSession session = request.getSession();
 					String teamId = (String) session.getAttribute("userId");
@@ -82,7 +86,9 @@ public class BidStatus extends HttpServlet {
 					st.executeUpdate("Insert into bids values('" + playerId + "','" + teamId + "'," + bids + ",'" + diff + "')");	
 				}
 			} catch (Exception e) 
-			{ }
+			{ 
+				response.sendRedirect("/iplBidding/error.jsp");
+			}
 			response.sendRedirect("/iplBidding/bidFramework.jsp");
 		}
 		if(jsp.equals("exitBid"))

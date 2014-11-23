@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-Bidding process is paused.
-Previous results are :
-PlayerId : <%=request.getParameter("playerId")%>
-Squad : <%=request.getParameter("squad")%>
-Price : <%=request.getParameter("price")%>
+Bidding process is paused. 
+Previous results are : 
+PlayerId : <%=request.getParameter("player")%> <br />
+Squad : <%=request.getParameter("squad")%>  <br />
+Price : <%=request.getParameter("price")%>  <br />
+Select exit bid to leave the auction
 </body>
 </html>

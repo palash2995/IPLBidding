@@ -21,12 +21,72 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>User</display-name>
-    <servlet-name>User</servlet-name>
-    <servlet-class>main.User</servlet-class>
+    <display-name>TeamOff</display-name>
+    <servlet-name>TeamOff</servlet-name>
+    <servlet-class>main.TeamOff</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>User</servlet-name>
-    <url-pattern>/User</url-pattern>
+    <servlet-name>TeamOff</servlet-name>
+    <url-pattern>/TeamOff</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Admin</display-name>
+    <servlet-name>Admin</servlet-name>
+    <servlet-class>main.Admin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Admin</servlet-name>
+    <url-pattern>/Admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BiddingManager</display-name>
+    <servlet-name>BiddingManager</servlet-name>
+    <servlet-class>main.BiddingManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BiddingManager</servlet-name>
+    <url-pattern>/BiddingManager</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BidStatus</display-name>
+    <servlet-name>BidStatus</servlet-name>
+    <servlet-class>main.BidStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BidStatus</servlet-name>
+    <url-pattern>/BidStatus</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Dummy</display-name>
+    <servlet-name>Dummy</servlet-name>
+    <servlet-class>main.Dummy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dummy</servlet-name>
+    <url-pattern>/Dummy</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Player</display-name>
+    <servlet-name>Player</servlet-name>
+    <servlet-class>main.Player</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Player</servlet-name>
+    <url-pattern>/Player</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Submit</display-name>
+    <servlet-name>Submit</servlet-name>
+    <servlet-class>main.Submit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Submit</servlet-name>
+    <url-pattern>/Submit</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -21,24 +21,47 @@
   		{
   			if (xmlhttp.readyState==4 && xmlhttp.status==200)
    			{
-   				 document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+   				 document.getElementById("Div1").innerHTML=xmlhttp.responseText;
     		}
   		}
 		xmlhttp.open("POST","Dummy",true);
 		xmlhttp.send();
-		}, 5000);
+		}, 1000);
+		setInterval(function ()
+		{
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+		  	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		 		 xmlhttp=new XMLHttpRequest();
+			}
+			else
+		  	{// code for IE6, IE5
+		  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  	}
+			xmlhttp.onreadystatechange=function()
+		  	{
+		  		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		   		{
+		   			 document.getElementById("Div2").innerHTML=xmlhttp.responseText;
+		    	}
+		  	}
+			xmlhttp.open("POST","Submit",true);
+			xmlhttp.send();
+		}, 10000);
 </script>
 </head>
 
 <body>
-<div id="myDiv">
+<div id="Div1">
 <h2>Shows time remaining for current bid</h2>
 </div>
+<div id="Div2">
+<h2> Enter your bid here
+</h2>
+</div>
 
-<form action="BidStatus" method="post">
-Exit Current Bid
-<input type="submit" value="Exit Bid"> <br/>
-<input type="hidden" name="purpose" value="exitBid" >
-</form>
+<form action="BidStatus" method="post">Exit Current Bid <input
+	type="submit" value="Exit Bid"> <br />
+<input type="hidden" name="purpose" value="exitBid"></form>
 </body>
 </html>

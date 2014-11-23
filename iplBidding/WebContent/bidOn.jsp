@@ -7,14 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-PlayerId : <%=request.getParameter("playerId")%>
-Time remaining : <%=request.getParameter("time")%> 
+PlayerId : <%=request.getParameter("player")%> <br/>
+Time remaining : <%=request.getParameter("time")%> seconds <br/>
 
-<form action="BidStatus" method="post">
-New Bid
-<input type="text" name="bidAmount" size="20px"> <br/>
-<input type="submit" value="Bid"> <br/>
-<input type="hidden" name="purpose" value="newBid" >
-</form>
+Current best bid <br/>
+TeamId : <%=request.getParameter("squad")%> <br/>
+Price : <%=request.getParameter("bid")%> <br/>
+
+
 </body>
 </html>

@@ -83,7 +83,7 @@ public class BidStatus extends HttpServlet {
 				while(rs.next()) bestPrice = rs.getInt("bestPrice");
 				
 				rs = st.executeQuery("Select cap from teamDetails where teamId = '" + teamId + "'");
-				int spendingCap = 1000000;
+				int spendingCap = 25000;
 				while(rs.next()) spendingCap = rs.getInt("cap");
 				
 				int foreignPlayers = 0, newPlayer = 0;
@@ -91,20 +91,19 @@ public class BidStatus extends HttpServlet {
 				while(rs.next())
 				{
 					String nationality = rs.getString("country");
-					if(nationality.equals("India") || nationality.equals("Indian")) foreignPlayers ++;
+					if(!(nationality.equals("India") || nationality.equals("Indian"))) foreignPlayers ++;
 				}
 				
 				rs = st.executeQuery("Select country from squad natural join playerDetails where playerId = '" + playerId + "'");
 				while(rs.next())
 				{
 					String nationality = rs.getString("country");
-					if(nationality.equals("India") || nationality.equals("Indian")) newPlayer = 10;
+					if(!(nationality.equals("India") || nationality.equals("Indian"))) newPlayer = 10;
 				}
 				
-				if((diff-time)<150000 && bids>bestPrice && spendingCap>bids && (foreignPlayers- newPlayer)>=0){
+				if((diff-time)<150000 && bids>bestPrice && spendingCap>bids && ((newPlayer-foreignPlayers)>=0 || newPlayer ==0)){
 					st = conn1.createStatement();
 					st.executeUpdate("Insert into bids values('" + playerId + "','" + teamId + "'," + bids + ",'" + diff + "')");
-					st.executeUpdate("Update teamDetails set cap = " + (spendingCap - bids) + " where teamId = '" + teamId + "'");	
 				}
 			} catch (Exception e) 
 			{ 

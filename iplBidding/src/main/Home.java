@@ -93,7 +93,8 @@ public class Home extends HttpServlet{
 
 				HttpSession session  = request.getSession();
 				session.setAttribute("userId",userId);
-				session.setAttribute("type",type);			
+				session.setAttribute("type",type);	
+				
 
 				if(type.equals("Player"))
 				{
@@ -102,7 +103,8 @@ public class Home extends HttpServlet{
 				}
 				if(type.equals("Team"))
 				{
-
+					
+					session.setAttribute("pUserId",null);
 					ResultSet rs;
 					Statement st = conn1.createStatement();
 

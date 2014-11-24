@@ -108,6 +108,8 @@ public class Player extends Home{
 		
 		st = conn1.createStatement();
 		
+		System.out.println("P "+ id);
+		
 		//OLAP remaining 
 		ResultSet rs = st.executeQuery("select * from playerDetails where playerid = '" + id + "'");	
 		if(!rs.next())

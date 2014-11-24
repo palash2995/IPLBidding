@@ -23,7 +23,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="playerHome.jsp"><span class="glyphicon glyphicon-user"></span>Home</a></li>
+            <li><a href=<%if(session.getAttribute("type").equals("Team"))out.println("\"bidFramework.jsp\"");
+            else if(session.getAttribute("type").equals("Administrator"))out.println("\"bidId.jsp\"");
+            else out.println("\"playerHome.jsp\"");%>><span class="glyphicon glyphicon-user"></span>Home</a></li>
             <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
           </ul>
         </div>

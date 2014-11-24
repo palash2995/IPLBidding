@@ -74,9 +74,9 @@ public class TeamBidEntry extends HttpServlet {
 			}
 		}catch (Exception e) 
 		{ 
-			response.sendRedirect("/iplBidding/teamHome.jsp");
+			response.sendRedirect("/iplBidding/teamHomeOff.jsp");
 		}	
-		response.sendRedirect("/iplBidding/teamHome.jsp");
+		response.sendRedirect("/iplBidding/teamHomeOff.jsp");
 	}
 
 }

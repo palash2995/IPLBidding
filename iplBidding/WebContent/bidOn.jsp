@@ -35,7 +35,7 @@
 <td> Spending Cap : </td> <td>  <%=request.getParameter("cap")%>  </td>
 </tr>
 <tr>
-<td> Foreign Players Cap : </td> <td>  <%=request.getParameter("foreignPlayers")%>  </td>
+<td> Foreign Players Cap : </td> <td>  <%=request.getParameter("foreign")%>  </td>
 </tr>
 </table>
 </div>

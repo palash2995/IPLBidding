@@ -21,9 +21,7 @@ public class Users {
 
 		try 
 		{
-			System.out.println("yehi");
 			Class.forName("org.postgresql.Driver");
-			System.out.println("yehi2");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,8 +32,6 @@ public class Users {
 		ResultSet rs;
 		Statement st = conn.createStatement();
 		
-		
-		System.out.println("asd " + Id+pass+type);
 		
 		if(type.equals("Player"))
 		{

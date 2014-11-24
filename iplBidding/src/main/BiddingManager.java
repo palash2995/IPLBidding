@@ -63,7 +63,14 @@ public class BiddingManager extends HttpServlet {
 			}
 			System.out.println(teamId + price + playerId);
 			st = conn1.createStatement();
+			
+			rs = st.executeQuery("Select cap from teamDetails where teamId = '" + teamId + "'");
+			int spendingCap=25000;
+			while(rs.next()) spendingCap = rs.getInt("cap");
+			
+			
 			st.executeUpdate("Update Squad set teamId = '" + teamId + "', price = " + price + " where playerId = '" + playerId + "'");
+			st.executeUpdate("Update teamDetails set cap = " + (spendingCap - price) + " where teamId = '" + teamId + "'");	
 			Thread.sleep(10000);	
 			st = conn1.createStatement();
 			st.executeUpdate("Delete from playerBid");

@@ -77,12 +77,17 @@ public class Dummy extends HttpServlet {
 			}
 			else
 			{
+				
+				
+				
 				time = Long.parseLong(bidStartTime);
 				HttpSession session = request.getSession();
 				teamId = (String) session.getAttribute("userId");
+				session.setAttribute("pUserId",playerId);
+				
 				
 				rs = st.executeQuery("Select cap from teamDetails where teamId = '" + teamId + "'");
-				int spendingCap = 1000000;
+				int spendingCap = 25000;
 				while(rs.next()) spendingCap = rs.getInt("cap");
 				
 				rs = st.executeQuery("Select country from squad natural join playerDetails where teamId = '" + teamId + "'");
@@ -90,7 +95,7 @@ public class Dummy extends HttpServlet {
 				while(rs.next())
 				{
 					String nationality = rs.getString("country");
-					if(nationality.equals("India") || nationality.equals("Indian")) foreignPlayers ++;
+					if(!(nationality.equals("India") || nationality.equals("Indian"))) foreignPlayers ++;
 				}
 				
 				if((diff-time)>150000){
@@ -101,7 +106,7 @@ public class Dummy extends HttpServlet {
 						teamId = rs.getString("teamId");
 						price = rs.getString("price");
 					}
-					response.sendRedirect("/iplBidding/bidOff.jsp?price=" + price + "&player=" + playerId + "&squad=" + teamId + "&cap=" + spendingCap);
+					response.sendRedirect("/iplBidding/bidOff.jsp?price=" + price + "&player=" + playerId + "&squad=" + teamId + "&cap=" + spendingCap + "&foreign=" + (10-foreignPlayers));
 				}
 				else
 				{

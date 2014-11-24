@@ -52,8 +52,15 @@
 </form>
 </div>
 </center>
+<br>
 
-
+<center> <div class="container">
+<form action="TeamBidEntry" method="post" role="form">
+<button type="submit" value="enterBid" class="btn btn-default btn-lg">Enter Bid</button> 
+<input type="hidden" name="purpose" value="checkBid" >
+</form>
+</div>
+</center>
 
 
 </body>

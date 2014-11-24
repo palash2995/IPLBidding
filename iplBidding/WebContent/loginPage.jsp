@@ -58,7 +58,7 @@
 
 
     <div class="container">
-      <h2>Player Register</h2>
+      <h2>Player Sign Up</h2>
       <form action="Player" method="post" role="form">
         <div class="form-group">
           <label for="email">UserId:</label>

@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Dummy
@@ -77,6 +78,21 @@ public class Dummy extends HttpServlet {
 			else
 			{
 				time = Long.parseLong(bidStartTime);
+				HttpSession session = request.getSession();
+				teamId = (String) session.getAttribute("userId");
+				
+				rs = st.executeQuery("Select cap from teamDetails where teamId = '" + teamId + "'");
+				int spendingCap = 1000000;
+				while(rs.next()) spendingCap = rs.getInt("cap");
+				
+				rs = st.executeQuery("Select country from squad natural join playerDetails where teamId = '" + teamId + "'");
+				int foreignPlayers = 0;
+				while(rs.next())
+				{
+					String nationality = rs.getString("country");
+					if(nationality.equals("India") || nationality.equals("Indian")) foreignPlayers ++;
+				}
+				
 				if((diff-time)>150000){
 					st = conn1.createStatement();
 					rs = st.executeQuery("Select playerId, teamId, price from squad where playerId = '" + playerId + "'");
@@ -85,7 +101,7 @@ public class Dummy extends HttpServlet {
 						teamId = rs.getString("teamId");
 						price = rs.getString("price");
 					}
-					response.sendRedirect("/iplBidding/bidOff.jsp?price=" + price + "&player=" + playerId + "&squad=" + teamId);
+					response.sendRedirect("/iplBidding/bidOff.jsp?price=" + price + "&player=" + playerId + "&squad=" + teamId + "&cap=" + spendingCap);
 				}
 				else
 				{
@@ -98,7 +114,8 @@ public class Dummy extends HttpServlet {
 						price = rs.getString("price");
 					}
 					diff = 150 - (diff - time)/1000;
-					response.sendRedirect("/iplBidding/bidOn.jsp?time=" + diff + "&player=" + playerId + "&squad=" + teamId + "&bid=" + price);
+					response.sendRedirect("/iplBidding/bidOn.jsp?time=" + diff + "&player=" + playerId + "&squad="
+							+ teamId + "&bid=" + price + "&cap=" + spendingCap + "&foreign=" + (10-foreignPlayers));
 				}
 			}
 		} catch (Exception e) {

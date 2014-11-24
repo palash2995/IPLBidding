@@ -75,15 +75,36 @@ public class BidStatus extends HttpServlet {
 				}
 				time = Long.parseLong(bidStartTime);
 				int bestPrice = 0;
+				HttpSession session = request.getSession();
+				String teamId = (String) session.getAttribute("userId");
 				st = conn1.createStatement();
+				
 				rs = st.executeQuery("Select max(price) as bestPrice from bids where playerId ='" + playerId + "'");
 				while(rs.next()) bestPrice = rs.getInt("bestPrice");
-				if((diff-time)<150000 && bids>bestPrice){
+				
+				rs = st.executeQuery("Select cap from teamDetails where teamId = '" + teamId + "'");
+				int spendingCap = 1000000;
+				while(rs.next()) spendingCap = rs.getInt("cap");
+				
+				int foreignPlayers = 0, newPlayer = 0;
+				rs = st.executeQuery("Select country from squad natural join playerDetails where teamId = '" + teamId + "'");
+				while(rs.next())
+				{
+					String nationality = rs.getString("country");
+					if(nationality.equals("India") || nationality.equals("Indian")) foreignPlayers ++;
+				}
+				
+				rs = st.executeQuery("Select country from squad natural join playerDetails where playerId = '" + playerId + "'");
+				while(rs.next())
+				{
+					String nationality = rs.getString("country");
+					if(nationality.equals("India") || nationality.equals("Indian")) newPlayer = 10;
+				}
+				
+				if((diff-time)<150000 && bids>bestPrice && spendingCap>bids && (foreignPlayers- newPlayer)>=0){
 					st = conn1.createStatement();
-					HttpSession session = request.getSession();
-					String teamId = (String) session.getAttribute("userId");
-					st = conn1.createStatement();
-					st.executeUpdate("Insert into bids values('" + playerId + "','" + teamId + "'," + bids + ",'" + diff + "')");	
+					st.executeUpdate("Insert into bids values('" + playerId + "','" + teamId + "'," + bids + ",'" + diff + "')");
+					st.executeUpdate("Update teamDetails set cap = " + (spendingCap - bids) + " where teamId = '" + teamId + "'");	
 				}
 			} catch (Exception e) 
 			{ 

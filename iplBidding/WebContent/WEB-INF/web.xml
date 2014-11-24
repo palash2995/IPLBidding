@@ -89,4 +89,14 @@
     <servlet-name>Submit</servlet-name>
     <url-pattern>/Submit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TeamBidEntry</display-name>
+    <servlet-name>TeamBidEntry</servlet-name>
+    <servlet-class>main.TeamBidEntry</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeamBidEntry</servlet-name>
+    <url-pattern>/TeamBidEntry</url-pattern>
+  </servlet-mapping>
 </web-app>

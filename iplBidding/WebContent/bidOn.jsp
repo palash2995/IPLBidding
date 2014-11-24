@@ -31,6 +31,12 @@
 <tr>
 <td> Price : </td> <td>  <%=request.getParameter("bid")%>  </td>
 </tr>
+<tr>
+<td> Spending Cap : </td> <td>  <%=request.getParameter("cap")%>  </td>
+</tr>
+<tr>
+<td> Foreign Players Cap : </td> <td>  <%=request.getParameter("foreignPlayers")%>  </td>
+</tr>
 </table>
 </div>
 

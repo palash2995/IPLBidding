@@ -25,6 +25,9 @@ Previous results </h2>
 <tr>
 <td> Price : </td> <td> <%=request.getParameter("price")%>  </td>
 </tr>
+<tr>
+<td> Spending Cap : </td> <td>  <%=request.getParameter("cap")%>  </td>
+</tr>
 </table>
 </div>
 </body>

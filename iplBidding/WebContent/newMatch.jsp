@@ -58,7 +58,7 @@
 	
 	
 	
-	Team 2 Scores
+	Team 1 Scores
 	
 		<table class="table table-bordered">
         <thead>

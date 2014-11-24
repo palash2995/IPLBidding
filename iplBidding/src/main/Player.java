@@ -108,7 +108,7 @@ public class Player extends Home{
 		
 		st = conn1.createStatement();
 		
-		System.out.println("P "+ id);
+
 		
 		//OLAP remaining 
 		ResultSet rs = st.executeQuery("select * from playerDetails where playerid = '" + id + "'");	
@@ -121,7 +121,7 @@ public class Player extends Home{
 		ResultSet rs2 = st.executeQuery("select * from playerStats where playerid = '" + id + "'");	
 		if(!rs2.next())
 		{
-			System.out.println("Chal jhoote");
+			
 		}
 		String matches = rs2.getString("matches");
 		String runs    = rs2.getString("runs");
@@ -148,7 +148,7 @@ public class Player extends Home{
 		String id = (String) session.getAttribute("userId");
 		String type = (String) session.getAttribute("type");
 		
-		if(type.equals("p"))
+		if(type.equals("Player"))
 		{
 			ResultSet rs = st.executeQuery("select * from playerDetails where playerId = '" + id + "'");	
 			if(!rs.next())
@@ -175,14 +175,14 @@ public class Player extends Home{
 		{
 			HttpSession session = request.getSession();
 			String userId = (String) session.getAttribute("userId");
-			System.out.println("isliye "+userId);
+		
 			String name = request.getParameter("UserName");
 			String country = request.getParameter("Country");
-			System.out.println("dj");
+		
 
 			st = conn1.createStatement();
 			st.executeUpdate("update playerDetails set name = '" + name + "', country = '" + country + "' where playerId = '" + userId +"'");	
-			System.out.println("statement created");
+	
 			response.sendRedirect("/iplBidding/playerHome.jsp");		
 		}
 		

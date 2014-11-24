@@ -152,7 +152,7 @@ public class TeamOff extends Home{
 		String id = (String) session.getAttribute("userId");
 		String type = (String) session.getAttribute("type");
 		
-		if(type.equals("t"))
+		if(type.equals("Team"))
 		{
 			ResultSet rs = st.executeQuery("select * from teamDetails where teamId = '" + id + "'");	
 			System.out.println("isliye hi to");

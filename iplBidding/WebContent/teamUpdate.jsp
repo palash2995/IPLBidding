@@ -33,7 +33,7 @@
 
 
     <div class="container">
-	<h2 class="text-center"> Hi , <%=request.getParameter("teamName") %></h2>
+	<h2 class="text-center"> Hi <%=request.getParameter("teamName") %></h2>
     </div>
 
 

@@ -32,7 +32,7 @@
 
 
     <div class="container">
-	<h2 class="text-center"> Hi , <%=request.getParameter("userName") %></h2>
+	<h2 class="text-center"> Hi <%=request.getParameter("userName") %></h2>
     </div>
 
 

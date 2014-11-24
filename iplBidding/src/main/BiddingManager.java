@@ -68,6 +68,11 @@ public class BiddingManager extends HttpServlet {
 			int spendingCap=25000;
 			while(rs.next()) spendingCap = rs.getInt("cap");
 			
+			if(teamId==null)
+			{
+				teamId="23";
+				
+			}	
 			
 			st.executeUpdate("Update Squad set teamId = '" + teamId + "', price = " + price + " where playerId = '" + playerId + "'");
 			st.executeUpdate("Update teamDetails set cap = " + (spendingCap - price) + " where teamId = '" + teamId + "'");	
@@ -76,7 +81,7 @@ public class BiddingManager extends HttpServlet {
 			st.executeUpdate("Delete from playerBid");
 			} catch (Exception e) {
 				e.printStackTrace();
-				response.sendRedirect("/iplBidding/error.jsp");
+				response.sendRedirect("/iplBidding/error.jsp?reason= Koi to khareed Lo :( ");
 			}
 			response.sendRedirect("/iplBidding/adminHomeOff.jsp");
 		}
